@@ -1,5 +1,5 @@
 // build your `Project` model here
-const db = require('../data/dbConfig.js');
+const db = require('../data/db-config.js');
 
 module.exports = {
     getProjects,
@@ -9,17 +9,17 @@ module.exports = {
 }
 
 function getProjects(){
-    return db('project')
+    return db('projects')
 }
 
 function findById(id){
-    return db('project')
+    return db('projects')
         .where({id})
         .first();
 }
 
 function addProjects(project){
-    return db('project')
+    return db('projects')
         .insert(project, 'id')
         .then(id => {
             return findById(id[0])
@@ -27,7 +27,7 @@ function addProjects(project){
 }
 
 function remove(id) {
-    return db('project')
+    return db('projects')
     .where({ id })
     .del();
 }

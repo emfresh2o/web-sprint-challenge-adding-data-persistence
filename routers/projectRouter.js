@@ -3,7 +3,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const Projects = require("./project/model.js");
+const Projects = require("./projectModel");
 
 router.get('/', (req, res) => {
   Projects.getProjects()
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     if (project) {
       res.json(project);
     } else {
-      res.status(404).json({ message: 'Could not find a project with given id.' })
+      res.status(404).json({ message: 'Cannot find a project with given id.' })
     }
   })
   .catch(err => {
